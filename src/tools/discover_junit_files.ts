@@ -3,14 +3,9 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 
 export const discoverJUnitFilesConfig = {
-    description: 'Discover JUnit XML files in the project',
+    title: 'Discover JUnit XML files',
+    description: 'Discover JUnit XML files in the project. Always run this first when a user asks for a JUnit XML file or wants to analyze tests results.',
     inputSchema: {
-        path: z
-            .string()
-            .optional()
-            .describe(
-                'Optional: The directory to start searching from. Defaults to the current working directory.'
-            ),
         maxDepth: z
             .number()
             .optional()
@@ -24,16 +19,22 @@ export function registerDiscoverJUnitFilesTool(server: McpServer) {
     server.registerTool(
         'discover_junit_files',
         discoverJUnitFilesConfig,
-        async (args: { path?: string; maxDepth?: number }) => {
-            const { path, maxDepth } = args;
-            const files = await listJUnitXmlPaths(path, maxDepth);
+        async (args: { maxDepth?: number }) => {
+            const { maxDepth } = args;
+            const files = await listJUnitXmlPaths('.', maxDepth);
             let responseText: string;
             if (files.length === 0) {
-                responseText = "No JUnit XML files were found. Please provide a path to the JUnit XML file you want to use.";
+                responseText =
+                    'No JUnit XML files were found. Please provide a path to the JUnit XML file you want to use.';
             } else if (files.length > 1) {
-                responseText = "Multiple JUnit XML files were found. Please specify which file you'd like to use: " + files.join(', ');
+                responseText =
+                    "Multiple JUnit XML files were found. Please specify which file you'd like to use: " +
+                    files.join(', ');
             } else {
-                responseText = "Found one JUnit XML file: " + files[0] + ". Proceeding with this file.";
+                responseText =
+                    'Found one JUnit XML file: ' +
+                    files[0] +
+                    '. Proceeding with this file.';
             }
 
             return {

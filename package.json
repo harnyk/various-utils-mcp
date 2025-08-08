@@ -1,6 +1,6 @@
 {
   "name": "@harnyk/various-utils-mcp",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "MCP server with various utilities (path_relative)",
   "type": "module",
   "main": "dist/server.js",

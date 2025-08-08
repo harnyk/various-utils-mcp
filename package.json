@@ -4,6 +4,7 @@
   "description": "MCP server with various utilities (path_relative)",
   "type": "module",
   "main": "dist/server.js",
+  "private": false,
   "bin": {
     "various-utils-mcp": "dist/server.js"
   },

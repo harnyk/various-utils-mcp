@@ -1,0 +1,27 @@
+{
+  "name": "@harnyk/various-utils-mcp",
+  "version": "0.1.0",
+  "description": "MCP server with various utilities (path_relative)",
+  "type": "module",
+  "main": "dist/server.js",
+  "bin": {
+    "various-utils-mcp": "dist/server.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/server.ts",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.1",
+    "fast-glob": "^3.3.3",
+    "fast-xml-parser": "^5.2.5",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2"
+  }
+}

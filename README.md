@@ -37,33 +37,19 @@ Currently, the server offers the following functionalities:
 
 ## Installation
 
-To set up the project, follow these steps:
+To install the `various-utils-mcp` CLI globally, run:
 
-1.  Clone the repository:
-    ```bash
-    git clone <repository-url>
-    cd mcp-various-utils
-    ```
-2.  Install dependencies:
-    ```bash
-    npm install
-    # or yarn install
-    # or pnpm install
-    ```
-3.  Build the project:
-    ```bash
-    npm run build
-    ```
+```bash
+pnpm install -g @harnyk/various-utils-mcp
+```
 
 ## Usage
 
-To start the MCP server, run:
+To start the MCP server, run the installed binary:
 
 ```bash
-npm start
+various-utils-mcp
 ```
-
-The server will then be ready to accept connections from MCP clients and expose the registered tools and prompts.
 
 ## Development
 
